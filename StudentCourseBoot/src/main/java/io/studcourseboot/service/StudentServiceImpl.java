@@ -1,6 +1,6 @@
 package io.studcourseboot.service;
 
-import java.math.BigInteger;
+//import java.math.BigInteger;
 import java.util.*;
 
 import org.springframework.stereotype.Service;
@@ -77,6 +77,16 @@ public class StudentServiceImpl implements StudentService {
 		return null;
 	}
 
+	public Course retrieveCoursebyId(String courseId) {
+		for (Course cr : coursedata) {
+			if (cr.getCourseId().equals(courseId)) {
+				return cr;
+			}
+		}
+		return null;
+	}
+
+	
 	public List<Course> retrieveCourses(String studentId) {
 		Student stud = retrieveStudent(studentId);
 
@@ -105,35 +115,44 @@ public class StudentServiceImpl implements StudentService {
 		}
 		return null;
 	}
+   /*
+	public void addCourse(Course cour) {
 
-	public void addCourse() {
-
-		Course c1 = new Course("C206", "Artificial Intelligence", "Machine Learing in DWH",
+		cour  = new Course("C206", "Artificial Intelligence", "Machine Learing in DWH",
 				Arrays.asList("Image Processing", "Speed Recognition", "Robotics", "Pattern Recognition"));
         
-		Course c2 = new Course("C207", "Numerical Methods", "Mathematics",
+		coursedata.add(cour);
+		
+		cour = new Course("C207", "Numerical Methods", "Mathematics",
 				Arrays.asList("Round Off Errors", "Polynomials & Equations", 
 						"ODE", "Algebra"));
-        
-		Course c3 = new Course("C208", "Sofware Engineering", "E-Commerce Functionality",
+		coursedata.add(cour);
+		
+		cour = new Course("C208", "Sofware Engineering", "E-Commerce Functionality",
 				Arrays.asList("Program Design", "Fundamentals of SDLC", 
 						"Quality Assurance", "Configuration Management"));
-        
-		Course c4 = new Course("C209", "Microcontroller & Microprocesser", 
+		
+		coursedata.add(cour);
+		
+		cour = new Course("C209", "Microcontroller & Microprocesser", 
 				"Design & Development", Arrays.asList("Interface Circuits", "Macros & Assemblers", 
 						"Signals & Communications", "8051 Architecture"));
         
-		Course c5 = new Course("C210", "Probability & Statistics", "Scientific Methodology",
+		coursedata.add(cour);
+		
+		cour = new Course("C210", "Probability & Statistics", "Scientific Methodology",
 				Arrays.asList("Mean Medium & Variance", "Binomial Distributions", 
 						"Standard Deviation", "Graph Theory"));
         
-	   coursedata.add(c1);
-	   coursedata.add(c2);
-	   coursedata.add(c3);
-	   coursedata.add(c4);
-	   coursedata.add(c5);
-	   
+	    coursedata.add(cour);
+			   
 	   System.out.println("New Courses Inserted Successfully");
 	  }
-	 
+	 */
+
+	public void deleteCourse(String courseId) {
+		Course co = retrieveCoursebyId(courseId);
+		coursedata.remove(co);
+		
+	}
 }
